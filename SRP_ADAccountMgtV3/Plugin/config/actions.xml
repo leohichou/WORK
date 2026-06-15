@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<remv1:Remediation-Plugin Name="AD Account ManagementV3" Guid="854e8806-a960-4f47-ab0f-26a7f726f39b" xmlns:remv1="RemediationVersion1.xsd" Version="3" IsLogRhythmPlugin="true">
+  <remv1:Action Name="Create AD Account Mgt V3 Configuration File" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Order="1" Switch="-file Configuration.ps1" />
+    <remv1:StringParameter Name="Admin Login User Name*" Switch="-AdminLoginUserName " Order="2" />
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="Admin Password*" Switch="-AdminPassword " Order="3" />
+    </remv1:EncryptedParameter>
+  </remv1:Action>
+  <remv1:Action Name="Get AD Account Info" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Order="1" Switch="-file DisplayAdAccountInfo.ps1" />
+    <remv1:StringParameter Name="Target Account Name*" Switch="-TargetAccount " Order="2" />
+    <remv1:StringParameter Name="Target Domain*" Switch="-TargetDomain " Order="3" />
+  </remv1:Action>
+  <remv1:Action Name="Disable AD Account" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Order="1" Switch="-file DisableADAccount.ps1" />
+    <remv1:StringParameter Name="Target Account Name*" Switch="-TargetAccount " Order="2" />
+    <remv1:StringParameter Name="Target Domain*" Switch="-TargetDomain " Order="3" />
+  </remv1:Action>
+  <remv1:Action Name="Enable AD Account" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Order="1" Switch="-file EnableADAccount.ps1" />
+    <remv1:StringParameter Name="Target Account Name*" Switch="-TargetAccount " Order="2" />
+    <remv1:StringParameter Name="Target Domain*" Switch="-TargetDomain " Order="3" />
+  </remv1:Action>
+  <remv1:Action Name="Unlock AD Account" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Order="1" Switch="-file UnlockADAccount.ps1" />
+    <remv1:StringParameter Name="Target Account Name*" Switch="-TargetAccount " Order="2" />
+    <remv1:StringParameter Name="Target Domain*" Switch="-TargetDomain " Order="3" />
+  </remv1:Action>
+  <remv1:Action Name="Reset Password for AD Account" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Order="1" Switch="-file PasswordResetADAccount.ps1" />
+    <remv1:StringParameter Name="Target Account Name*" Switch="-TargetAccount " Order="2" />
+    <remv1:StringParameter Name="Target Domain*" Switch="-TargetDomain " Order="3" />
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="Temporary Password*" Switch="-TemporaryPassword " Order="4" />
+    </remv1:EncryptedParameter>
+  </remv1:Action>
+</remv1:Remediation-Plugin>
