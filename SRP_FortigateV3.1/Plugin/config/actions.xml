@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<remv1:Remediation-Plugin xmlns:remv1="RemediationVersion1.xsd" Name="FortiGate V3.1" Guid="544af519-4b78-4bc9-b7b6-1b8d5b739988" Version="3" IsLogRhythmPlugin="true">
+  <remv1:Action Name="Add IP to Group" Command="C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-nop -file Add-IP.ps1" Order="0" />
+    <remv1:StringParameter Name="Username" Switch="-UserName " Order="1">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="admin" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="Password" Switch="-Password " Order="2"></remv1:StringParameter>
+    </remv1:EncryptedParameter>
+    <remv1:StringParameter Name="FortiGate IP" Switch="-FortiIP " Order="3"></remv1:StringParameter>
+    <remv1:StringParameter Name="FortiGate Admin Port" Switch="-Port " Order="4">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="8443" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:ConstantParameter Name="Command (add_ip)" Switch="-Command add_ip " Order="5" />
+    <remv1:StringParameter Name="Target IP" Switch="-Object " Order="6">
+      <remv1:DefaultInput>
+        <remv1:SIP />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Group" Switch="-Group " Order="7">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="logrhythm-blocklist" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="VDOM" Switch="-VDOM " Order="8">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="root" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+  </remv1:Action>
+  <remv1:Action Name="Add Domain to Group" Command="C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-nop -file Add-Domain.ps1" Order="0" />
+    <remv1:StringParameter Name="Username" Switch="-UserName " Order="1">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="admin" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="Password" Switch="-Password " Order="2"></remv1:StringParameter>
+    </remv1:EncryptedParameter>
+    <remv1:StringParameter Name="FortiGate IP" Switch="-FortiIP " Order="3"></remv1:StringParameter>
+    <remv1:StringParameter Name="FortiGate Admin Port" Switch="-Port " Order="4">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="8443" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:ConstantParameter Name="Command (add_domain)" Switch="-Command add_domain " Order="5" />
+    <remv1:StringParameter Name="Target Domain" Switch="-Object " Order="6">
+      <remv1:DefaultInput>
+        <remv1:SIP />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Group" Switch="-Group " Order="7">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="logrhythm-blocklist" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="VDOM" Switch="-VDOM " Order="8">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="root" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+  </remv1:Action>
+  <remv1:Action Name="Display Group Info" Command="C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe">
+    <remv1:ConstantParameter Name="Script" Switch="-nop -file Group-Info.ps1" Order="0" />
+    <remv1:StringParameter Name="Username" Switch="-Username " Order="1">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="admin" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="Password" Switch="-Password " Order="2"></remv1:StringParameter>
+    </remv1:EncryptedParameter>
+    <remv1:StringParameter Name="FortiGate IP" Switch="-FortiIP " Order="3"></remv1:StringParameter>
+    <remv1:StringParameter Name="FortiGate Admin Port" Switch="-Port " Order="4">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="8443" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:ConstantParameter Name="Command (get)" Switch="-Command get " Order="5" />
+    <remv1:StringParameter Name="Target Group" Switch="-Object " Order="6">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="logrhythm-blocklist" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="VDOM" Switch="-VDOM " Order="7">
+      <remv1:DefaultInput>
+        <remv1:StaticInput Value="root" />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+  </remv1:Action>
+</remv1:Remediation-Plugin>
