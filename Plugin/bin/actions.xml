@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<remv1:Remediation-Plugin xmlns:remv1="RemediationVersion1.xsd" Name="Kill Windows Process V2" Guid ="eacd40f2-a2f4-42dc-9cfe-73ed2427ecf3" Version="2" IsLogRhythmPlugin="true">
+  <remv1:Action Name="Kill Process Using Job Manager Service Credentials" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Switch="-file KillProcessUsingJMSCreds.ps1" Order="1" />
+    <remv1:StringParameter Name="Target Host *" Switch="-TargetHost" Order="2">
+      <remv1:DefaultInput>
+        <remv1:DHostName />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Target Process *" Switch="-TargetProcess" Order="3">
+      <remv1:DefaultInput>
+        <remv1:Process />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+  </remv1:Action>
+  <remv1:Action Name="Kill Process Using Alternate Credentials" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Switch="-file KillProcessUsingAlternateCreds.ps1" Order="1" />
+    <remv1:StringParameter Name="Target Host *" Switch="-TargetHost" Order="2">
+      <remv1:DefaultInput>
+        <remv1:DHostName />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Target Process *" Switch="-TargetProcess" Order="3">
+      <remv1:DefaultInput>
+        <remv1:Process />
+      </remv1:DefaultInput>
+    </remv1:StringParameter>
+    <remv1:StringParameter Name="Admin Account Name *" Switch="-AdminUserName" Order="4" />
+    <remv1:EncryptedParameter>
+      <remv1:StringParameter Name="Admin Password *" Switch="-AdminPassword" Order="5" />
+    </remv1:EncryptedParameter>
+  </remv1:Action>
+</remv1:Remediation-Plugin>
