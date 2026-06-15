@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<remv1:Remediation-Plugin Name="Sophos Central V2" guid = "144e1adf-e670-4fb6-882d-51f94142bca3" xmlns:remv1="RemediationVersion1.xsd" Version="2" IsLogRhythmPlugin="true">
+  <remv1:Action Name="Create Sophos Central V2 Configuration file" Command="pwsh">
+   <remv1:ConstantParameter Name="Script" Switch="-file Configuration.ps1" Order="1" />
+   <remv1:EncryptedParameter> 
+    <remv1:StringParameter Name="Client ID *" Switch="-ClientID " Order="2" />
+   </remv1:EncryptedParameter> 
+   <remv1:EncryptedParameter> 
+    <remv1:StringParameter Name="Client Password *" Switch="-ClientPassword " Order="3" />
+   </remv1:EncryptedParameter> 
+     	<remv1:EncryptedParameter>
+            <remv1:StringParameter Name="Proxy Url(http://ip:port)" Switch="-ProxyUrl" Order="4" />
+        </remv1:EncryptedParameter>
+
+	<remv1:StringParameter Name="Proxy Username" Switch="-ProxyUname" Order="5" />
+
+	<remv1:EncryptedParameter>
+            <remv1:StringParameter Name="Proxy Password" Switch="-ProxyPasswd" Order="6" />
+        </remv1:EncryptedParameter> 
+ </remv1:Action>
+ 
+<remv1:Action Name="Add Url in Web Control Policy" Command="pwsh">
+   <remv1:ConstantParameter Name="Script" Switch="-file AddUrlInWebControlPolicy.ps1" Order="1" />
+   <remv1:StringParameter Name="Url *" Switch="-Url " Order="2" />
+   <remv1:StringParameter Name="Tags *" Switch="-Tags " Order="3" />
+</remv1:Action>
+ 
+<remv1:Action Name="Allow Item " Command="pwsh">
+   <remv1:ConstantParameter Name="Script" Switch="-file AllowItem.ps1" Order="1" />
+   <remv1:StringParameter Name="Type(path/sha256) *" Switch="-Type " Order="2" />
+   <remv1:StringParameter Name="Value *" Switch="-Value " Order="3" />
+</remv1:Action>
+
+<remv1:Action Name="Block Item " Command="pwsh">
+   <remv1:ConstantParameter Name="Script" Switch="-file BlockItem.ps1" Order="1" />
+   <remv1:StringParameter Name="sha256 *" Switch="-SHA256 " Order="2" />
+</remv1:Action>
+
+<remv1:Action Name="List Endpoints" Command="pwsh">
+   <remv1:ConstantParameter Name="Script" Switch="-file ListEndpoints.ps1" Order="1" />
+   <remv1:StringParameter Name="Endpoint Host Name" Switch="-HostName " Order="2" />
+</remv1:Action>
+ 
+<remv1:Action Name="Endpoint scan by the associated user" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Order="1" Switch="-file ScanUsersComps.ps1"/>
+    <remv1:StringParameter Name="User Name *" Order="2" Switch="-User "/>
+  </remv1:Action>
+
+  <remv1:Action Name="Endpoint scan by IPv4" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Order="1" Switch="-file EndpointScanByIPv4.ps1"/>
+    <remv1:StringParameter Name="IP Address *" Order="2" Switch="-IPv4 "/>
+  </remv1:Action>
+  <remv1:Action Name="Endpoint scan by Host Name" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Order="1" Switch="-file EndpointScanByHostname.ps1"/>
+    <remv1:StringParameter Name="HostName *" Order="2" Switch="-HostName "/>
+  </remv1:Action>
+   <remv1:Action Name="Isolate Endpoint by IPv4" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Order="1" Switch="-file IsolateEndpointByIPv4.ps1"/>
+    <remv1:StringParameter Name="IPv4 *" Order="2" Switch="-HostName "/>
+  </remv1:Action>
+  <remv1:Action Name="Isolate Endpoint by Host Name" Command="pwsh">
+    <remv1:ConstantParameter Name="Script" Order="1" Switch="-file IsolateEndpointByHostname.ps1"/>
+    <remv1:StringParameter Name="HostName *" Order="2" Switch="-HostName "/>
+  </remv1:Action>
+</remv1:Remediation-Plugin>
